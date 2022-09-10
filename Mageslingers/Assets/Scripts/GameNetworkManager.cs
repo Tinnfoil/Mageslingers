@@ -6,9 +6,4 @@ using Mirror;
 public class GameNetworkManager : NetworkManager
 {
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
