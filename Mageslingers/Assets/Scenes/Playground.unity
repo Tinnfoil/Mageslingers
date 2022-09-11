@@ -791,6 +791,7 @@ GameObject:
   - component: {fileID: 1321557630}
   - component: {fileID: 1321557631}
   - component: {fileID: 1321557632}
+  - component: {fileID: 1321557633}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -895,6 +896,18 @@ MonoBehaviour:
   clientMaxReceivesPerTick: 1000
   clientSendQueueLimit: 10000
   clientReceiveQueueLimit: 10000
+--- !u!114 &1321557633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321557627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4543102ff00883545b4a6af58894f33f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1402827283
 PrefabInstance:
   m_ObjectHideFlags: 0
