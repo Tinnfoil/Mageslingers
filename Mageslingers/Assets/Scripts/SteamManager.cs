@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class SteamManager : MonoBehaviour
 {
+    public bool SteamEnabled;
     private void Awake()
     {
+        if (!SteamEnabled) return;
         try
         {
             Steamworks.SteamClient.Init(2145460);

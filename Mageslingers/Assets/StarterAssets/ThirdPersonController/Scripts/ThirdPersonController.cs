@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Mirror;
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 using UnityEngine.InputSystem;
 #endif
@@ -12,7 +13,7 @@ namespace StarterAssets
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
     [RequireComponent(typeof(PlayerInput))]
 #endif
-    public class ThirdPersonController : MonoBehaviour
+    public class ThirdPersonController : NetworkBehaviour
     {
         [Header("Player")]
         [Tooltip("Move speed of the character in m/s")]
@@ -125,15 +126,18 @@ namespace StarterAssets
 
         private void Awake()
         {
+
+        }
+
+        private void Start()
+        {
+            if (!isLocalPlayer) return;
             // get a reference to our main camera
             if (_mainCamera == null)
             {
                 _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
             }
-        }
 
-        private void Start()
-        {
             _cinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
             
             _hasAnimator = TryGetComponent(out _animator);
@@ -154,6 +158,8 @@ namespace StarterAssets
 
         private void Update()
         {
+            if (!isLocalPlayer) return;
+
             _hasAnimator = TryGetComponent(out _animator);
 
             JumpAndGravity();
@@ -163,6 +169,7 @@ namespace StarterAssets
 
         private void LateUpdate()
         {
+            if (!isLocalPlayer) return;
             CameraRotation();
         }
 
@@ -213,6 +220,8 @@ namespace StarterAssets
 
         private void Move()
         {
+
+            Debug.Log("Move");
             // set target speed based on move speed, sprint speed and if sprint is pressed
             float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
 
