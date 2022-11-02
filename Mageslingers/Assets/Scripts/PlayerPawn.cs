@@ -5,6 +5,8 @@ using Mirror;
 
 public class PlayerPawn : NetworkPawn
 {
+    public ThirdPersonController controller;
+    public AttachToCamera cameraAttach;
     public override void Start()
     {
         base.Start();
@@ -19,6 +21,15 @@ public class PlayerPawn : NetworkPawn
     {
         base.OnStartClient();
         Debug.Log(netId);
+    }
+
+    public void IntializeController()
+    {
+
+        controller.Initialize();
+        cameraAttach.AttachCamera();
+        transform.position = new Vector3(0, 2, 0);
+
     }
 
 }

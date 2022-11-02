@@ -9,15 +9,21 @@ public class AttachToCamera : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        AttachCamera();
+    }
+
+    public void AttachCamera()
+    {
         if (hasAuthority)
         {
-            FindObjectOfType<CinemachineVirtualCamera>().Follow = this.gameObject.transform;
+            CinemachineVirtualCamera camera = FindObjectOfType<CinemachineVirtualCamera>();
+            if (camera != null) { camera.Follow = this.gameObject.transform; }
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

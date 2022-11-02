@@ -9,6 +9,8 @@ public class InputManager : MonoBehaviour
 
     public bool IsControlSet;
 
+    public bool Fire;
+    public bool AltFire;
     public Vector2 Move;
     public Vector2 Look;
     public bool Sprinting;
@@ -45,6 +47,14 @@ public class InputManager : MonoBehaviour
         }
     }
 
+    public void OnFire(InputAction.CallbackContext value)
+    {
+        Fire = value.performed;
+    }
+    public void OnAltFire(InputAction.CallbackContext value)
+    {
+        AltFire = value.performed;
+    }
     public void OnMove(InputAction.CallbackContext value)
     {
         //Debug.Log("OnMove:" + value.ReadValue<Vector2>());
@@ -71,6 +81,10 @@ public class InputManager : MonoBehaviour
     {
         if (IsControlSet) return;
 
+        InputAction Fire = playerInput.currentActionMap.FindAction("Fire");
+        Fire.performed += OnFire; Fire.canceled += OnFire;
+        InputAction AltFire = playerInput.currentActionMap.FindAction("AltFire");
+        AltFire.performed += OnAltFire; AltFire.canceled += OnAltFire;
         InputAction Move = playerInput.currentActionMap.FindAction("Move");
         Move.performed += OnMove; Move.canceled += OnMove;
         InputAction Look = playerInput.currentActionMap.FindAction("Look");
@@ -95,7 +109,8 @@ public class InputManager : MonoBehaviour
         playerInput.currentActionMap.FindAction("Look").performed -= OnLook; playerInput.currentActionMap.FindAction("Look").canceled -= OnLook;
         playerInput.currentActionMap.FindAction("Jump").performed -= OnJump;
         playerInput.currentActionMap.FindAction("Sprint").performed -= OnSprint; playerInput.currentActionMap.FindAction("Sprint").canceled -= OnSprint;
-
+        playerInput.currentActionMap.FindAction("Fire").performed -= OnFire; playerInput.currentActionMap.FindAction("Fire").canceled -= OnFire;
+        playerInput.currentActionMap.FindAction("AltFire").performed -= OnAltFire; playerInput.currentActionMap.FindAction("AltFire").canceled -= OnAltFire;
         IsControlSet = false;
     }
 

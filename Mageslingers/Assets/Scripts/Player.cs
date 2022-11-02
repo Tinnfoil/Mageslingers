@@ -8,14 +8,23 @@ public class Player : NetworkActor
     public GameObject PlayerPawnPrefab;
 
     public PlayerPawn PlayerPawn;
+
     public override void Start()
     {
         if (!hasAuthority) return;
 
         base.Start();
+    }
 
+    public override void Update()
+    {
+        base.Update();
+    }
 
-
+    public override void OnStartLocalPlayer()
+    {
+        base.OnStartLocalPlayer();
+        if (isLocalPlayer && PlayerManager.instance) { PlayerManager.LocalPlayer = this; PlayerManager.instance.RequestPawnData(netIdentity); }
     }
 
     public override void OnStartClient()
@@ -24,8 +33,20 @@ public class Player : NetworkActor
 
         if (!hasAuthority) return;
 
-        SpawnPlayerPawn(gameObject);
+        SpawnPlayerPawn();
+    }
 
+    public override void OnStopClient()
+    {
+        base.OnStopClient();
+
+        PlayerManager.instance.playerPawns.Remove(PlayerPawn);
+
+    }
+
+    public void SpawnPlayerPawn()
+    {
+        SpawnPlayerPawn(gameObject);
     }
 
     [Command]

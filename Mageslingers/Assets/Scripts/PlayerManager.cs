@@ -5,6 +5,13 @@ using Mirror;
 public class PlayerManager : NetworkBehaviour
 {
     public static PlayerManager instance;
+
+    private static Player localPlayer;
+    public static Player LocalPlayer { get { return localPlayer; } set { localPlayer = value;  } }
+    
+    
+    public List<PlayerPawn> playerPawns;
+
     public void Awake()
     {
         if (instance == null)
@@ -16,13 +23,24 @@ public class PlayerManager : NetworkBehaviour
             Destroy(this);
         }
     }
-    public List<PlayerPawn> playerPawns;
+
+    private void Start()
+    {
+        GameManager.instance.OnSceneLoaded += HandleSceneLoaded;
+    }
 
     public override void OnStartClient()
     {
         base.OnStartClient();
 
-        RequestPawnData(netIdentity);
+
+    }
+
+    public override void OnStartLocalPlayer()
+    {
+        base.OnStartLocalPlayer();
+       
+
     }
 
 
@@ -47,8 +65,19 @@ public class PlayerManager : NetworkBehaviour
             for (int i = 0; i < identities.Length; i++)
             {
                 identities[i].GetComponent<PlayerPawn>().name = data[i];
+                playerPawns.Add(identities[i].GetComponent<PlayerPawn>());
             }
         }
 
+    }
+
+    public void HandleSceneLoaded()
+    {
+        localPlayer.PlayerPawn.IntializeController();
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.instance.OnSceneLoaded -= HandleSceneLoaded;
     }
 }
