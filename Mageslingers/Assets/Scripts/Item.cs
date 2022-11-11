@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Item : PickupableActor
 {
+    [HideInInspector] public NetworkPawn Holder;
+    public Transform Model;
     public override void Interact()
     {
         base.Interact();

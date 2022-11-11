@@ -7,6 +7,11 @@ public class PlayerPawn : NetworkPawn
 {
     public ThirdPersonController controller;
     public AttachToCamera cameraAttach;
+
+    [Header("Transforms")]
+    public Transform RightHand;
+    public Transform LeftHand;
+
     public override void Start()
     {
         base.Start();

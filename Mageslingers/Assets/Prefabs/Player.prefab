@@ -66,3 +66,5 @@ MonoBehaviour:
   syncInterval: 0.1
   PlayerPawnPrefab: {fileID: 8989562773226680431, guid: 4e1200f62c0d20e488238196acdbc643,
     type: 3}
+  PlayerPawn: {fileID: 0}
+  Staff: {fileID: 7717960417792448232, guid: 119378b72c3347a4fb6f412363bd0e30, type: 3}

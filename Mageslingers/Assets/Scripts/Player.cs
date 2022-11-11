@@ -7,7 +7,11 @@ public class Player : NetworkActor
 {
     public GameObject PlayerPawnPrefab;
 
-    public PlayerPawn PlayerPawn;
+    [HideInInspector] public PlayerPawn PlayerPawn;
+
+
+    [Header("TESTING")]
+    public GameObject Staff;
 
     public override void Start()
     {
@@ -59,6 +63,10 @@ public class Player : NetworkActor
         NetworkServer.Spawn(g);
         g.GetComponent<NetworkIdentity>().AssignClientAuthority(requestingPlayer.GetComponent<NetworkIdentity>().connectionToClient);
 
+        GameObject staff = Instantiate(Staff);
+        NetworkServer.Spawn(staff);
+        staff.GetComponent<Staff>().CmdEquip(PlayerPawn.netIdentity);
+
         SpawnPlayerPawn_ClientRpc(g.GetComponent<NetworkIdentity>());
 
     }
@@ -68,6 +76,7 @@ public class Player : NetworkActor
     public void SpawnPlayerPawn_ClientRpc(NetworkIdentity pawn)
     {
         PlayerPawn = pawn.GetComponent<PlayerPawn>();
+
     }
 
 

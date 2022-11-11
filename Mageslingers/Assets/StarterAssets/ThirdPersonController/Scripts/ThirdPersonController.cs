@@ -120,6 +120,7 @@ public class ThirdPersonController : NetworkBehaviour
     public AnimationCurve StrafeCurve;
     public float Forward, Strafe;
 
+    public int WeaponType = 1;
     public bool SendLookData = false;
     public bool firing;
     public bool readyFiring;
@@ -169,7 +170,7 @@ public class ThirdPersonController : NetworkBehaviour
         if (_playerInput.AltFire && !readyFiring)
         {
             readyFiring = true;
-            _animator.SetInteger("WeaponType", 2);
+            _animator.SetInteger("WeaponType", WeaponType);
             _animator.SetBool("ReadyFire", true);
         }
         else if(!_playerInput.AltFire && readyFiring)

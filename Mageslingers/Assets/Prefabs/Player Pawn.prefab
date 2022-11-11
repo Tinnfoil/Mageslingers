@@ -2421,6 +2421,8 @@ MonoBehaviour:
   syncInterval: 0.1
   controller: {fileID: 8989562773226680420}
   cameraAttach: {fileID: 3378471371532775924}
+  RightHand: {fileID: 3907649340432014861}
+  LeftHand: {fileID: 4535200619205881821}
 --- !u!114 &8989562773226680420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2468,6 +2470,8 @@ MonoBehaviour:
   CameraAngleOverride: 0
   LockCameraPosition: 0
   _playerInput: {fileID: 0}
+  LookTime: 1
+  CurrentLookTime: 0
   ChestTransform: {fileID: 7219445342575057590}
   TurnCurve:
     serializedVersion: 2
@@ -2546,6 +2550,9 @@ MonoBehaviour:
     m_RotationOrder: 4
   Forward: 0
   Strafe: 0
+  SendLookData: 0
+  firing: 0
+  readyFiring: 0
 --- !u!95 &2407925855114096815
 Animator:
   serializedVersion: 4
