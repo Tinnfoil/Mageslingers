@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InteractableActor : NetworkActor
 {
-    public virtual void Interact()
+    public virtual void Interact(Vector3 mouseTarget)
     {
         Debug.Log("Interact");
     }

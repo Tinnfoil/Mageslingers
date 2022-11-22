@@ -31,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4060570523248019659
 MonoBehaviour:
@@ -67,4 +67,4 @@ MonoBehaviour:
   PlayerPawnPrefab: {fileID: 8989562773226680431, guid: 4e1200f62c0d20e488238196acdbc643,
     type: 3}
   PlayerPawn: {fileID: 0}
-  Staff: {fileID: 7717960417792448232, guid: 119378b72c3347a4fb6f412363bd0e30, type: 3}
+  Staff: {fileID: 8270570589856810790, guid: e2ea6ff667cdbc4429bd04592bc47bdb, type: 3}

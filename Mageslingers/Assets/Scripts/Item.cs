@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class Item : PickupableActor
 {
-    [HideInInspector] public NetworkPawn Holder;
+    [HideInInspector] public CharacterPawn Holder; // If not null, this item is "owned" by the player
     public Transform Model;
-    public override void Interact()
+    public bool IsHeld; // If held, it is the active item in the players hand
+
+    public override void Interact(Vector3 mouseTarget)
     {
-        base.Interact();
+        base.Interact(mouseTarget);
     }
 }

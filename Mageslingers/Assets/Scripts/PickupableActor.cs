@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PickupableActor : InteractableActor
 {
-    public override void Interact()
+    public override void Interact(Vector3 mouseTarget)
     {
         Debug.Log("Pick up Interact");
-        base.Interact();
+        base.Interact(mouseTarget);
     }
 }

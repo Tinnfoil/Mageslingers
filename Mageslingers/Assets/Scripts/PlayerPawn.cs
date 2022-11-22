@@ -3,14 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 
-public class PlayerPawn : NetworkPawn
+public class PlayerPawn : CharacterPawn
 {
     public ThirdPersonController controller;
     public AttachToCamera cameraAttach;
-
-    [Header("Transforms")]
-    public Transform RightHand;
-    public Transform LeftHand;
 
     public override void Start()
     {

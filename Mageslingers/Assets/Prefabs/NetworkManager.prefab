@@ -33,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7404442242006100512
 MonoBehaviour:
@@ -63,6 +63,9 @@ MonoBehaviour:
   playerSpawnMethod: 0
   spawnPrefabs:
   - {fileID: 8989562773226680431, guid: 4e1200f62c0d20e488238196acdbc643, type: 3}
+  - {fileID: 7717960417792448232, guid: 119378b72c3347a4fb6f412363bd0e30, type: 3}
+  - {fileID: 8473415990611236654, guid: 78a50e883b1321b4397895c25c4aaa36, type: 3}
+  - {fileID: 2743711430085315796, guid: 055119e1356e2ed4280f3d30d8b689da, type: 3}
 --- !u!114 &7404442242006100513
 MonoBehaviour:
   m_ObjectHideFlags: 0

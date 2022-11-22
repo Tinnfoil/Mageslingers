@@ -94,6 +94,15 @@ public class Player : NetworkActor
         PlayerPawn.name = data;
     }
 
+    [Command]
+    public void CmdEquipWeapon()
+    {
+        GameObject staff = Instantiate(Staff);
+        NetworkServer.Spawn(staff);
+        LeanTween.delayedCall(1, () => staff.GetComponent<Staff>().CmdEquip(PlayerPawn.netIdentity));
+        
+    }
+
     /*
     [TargetRpc]
     public void SpawnPlayerPawn_TargetRpc(NetworkConnection conn)

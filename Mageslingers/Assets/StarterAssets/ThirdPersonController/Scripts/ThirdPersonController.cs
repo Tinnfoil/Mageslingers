@@ -102,6 +102,7 @@ public class ThirdPersonController : NetworkBehaviour
     private Animator _animator;
     private CharacterController _controller;
     private GameObject _mainCamera;
+    public CharacterPawn characterPawn;
 
     private const float _threshold = 0.01f;
 
@@ -110,6 +111,7 @@ public class ThirdPersonController : NetworkBehaviour
 
     public float LookTime = 1;
     public float CurrentLookTime;
+    Vector3 mouseTarget;
     Vector3 targetChestEulers;
     public Transform ChestTransform;
     Vector3 aimVector;
@@ -161,6 +163,11 @@ public class ThirdPersonController : NetworkBehaviour
     {
         if (!hasAuthority) return;
 
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            PlayerManager.LocalPlayer.CmdEquipWeapon();
+        }
+
         _hasAnimator = TryGetComponent(out _animator);
 
         JumpAndGravity();
@@ -183,8 +190,9 @@ public class ThirdPersonController : NetworkBehaviour
             firing = true;
             readyFiring = false;
             _animator.SetTrigger("Fire");
+            characterPawn.HeldItem.Interact(mouseTarget);
             _animator.SetBool("ReadyFire", false);
-            LeanTween.delayedCall(1, () => { firing = false; });
+            LeanTween.delayedCall(1, () => { firing = false; }); //Cooldown
         }
     }
 
@@ -226,6 +234,7 @@ public class ThirdPersonController : NetworkBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit, 100, LayerMask.GetMask("Default"), QueryTriggerInteraction.Ignore))
         {
+            mouseTarget = hit.point;
         }
         if (_playerInput.AltFire)
         {
