@@ -2,11 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
-//using Sirenix.OdinInspector;
 
 public class Projectile : NetworkActor
 {
-    [Sirenix.OdinInspector.Required]
     public Hitbox hitbox;
     public GameObject Model;
 
