@@ -2372,6 +2372,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8613845783892994773}
   - component: {fileID: 354203185243623964}
+  - component: {fileID: 6409746307186110950}
   - component: {fileID: 8989562773226680420}
   - component: {fileID: 2407925855114096815}
   - component: {fileID: 8989562773226680421}
@@ -2422,9 +2423,25 @@ MonoBehaviour:
   RightHand: {fileID: 3907649340432014861}
   LeftHand: {fileID: 4535200619205881821}
   HeldItem: {fileID: 0}
+  inventory: {fileID: 6409746307186110950}
   Health: 0
   controller: {fileID: 8989562773226680420}
   cameraAttach: {fileID: 3378471371532775924}
+--- !u!114 &6409746307186110950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8989562773226680431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c02e825100c9de4095e1b442a443010, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  Items: []
 --- !u!114 &8989562773226680420
 MonoBehaviour:
   m_ObjectHideFlags: 0

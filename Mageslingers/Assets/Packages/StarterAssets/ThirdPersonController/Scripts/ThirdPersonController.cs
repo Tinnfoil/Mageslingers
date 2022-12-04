@@ -174,26 +174,65 @@ public class ThirdPersonController : NetworkBehaviour
         GroundedCheck();
         Move();
 
+
         if (_playerInput.AltFire && !readyFiring)
         {
             readyFiring = true;
             _animator.SetInteger("WeaponType", WeaponType);
             _animator.SetBool("ReadyFire", true);
         }
-        else if(!_playerInput.AltFire && readyFiring)
+        else if (!_playerInput.AltFire && readyFiring)
         {
             readyFiring = false;
             _animator.SetBool("ReadyFire", false);
         }
-        else if(_playerInput.AltFire && _playerInput.Fire && !firing)
+        else if (_playerInput.AltFire && _playerInput.Fire && !firing)
         {
             firing = true;
             readyFiring = false;
             _animator.SetTrigger("Fire");
-            characterPawn.HeldItem.Interact(mouseTarget);
+            characterPawn.HeldItem?.Interact(mouseTarget);
             _animator.SetBool("ReadyFire", false);
             LeanTween.delayedCall(1, () => { firing = false; }); //Cooldown
         }
+
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            if (characterPawn.HeldItem && characterPawn.HeldItem.GetComponent<Staff>())
+            {
+                characterPawn.HeldItem.GetComponent<Staff>().CmdUnEquip();
+            }
+
+        }
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.SphereCast(Camera.main.transform.position, .2f, ray.direction, out hit, 100, LayerMask.GetMask("Item"), QueryTriggerInteraction.Ignore))
+            {
+                if (characterPawn.HeldItem == null && hit.collider.GetComponentInParent<Staff>())
+                {
+                    hit.collider.GetComponentInParent<Staff>().CmdEquip(characterPawn.netIdentity);
+                    //characterPawn.HeldItem.GetComponent<Staff>().CmdUnEquip();
+                }
+                else if (hit.collider.GetComponentInParent<PickupableActor>())
+                {
+                    hit.collider.GetComponentInParent<PickupableActor>().Pickup(characterPawn, characterPawn.inventory);
+                }
+            }
+           
+        }
+
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            foreach (PickupableActor item in characterPawn.inventory.Items)
+            {
+                item.Drop(characterPawn, characterPawn.inventory);
+            }
+
+        }
+
     }
 
     private void LateUpdate()
@@ -299,7 +338,7 @@ public class ThirdPersonController : NetworkBehaviour
         if (_hasAnimator)
         {
             _animator.SetBool(_animIDGrounded, Grounded);
-            
+
         }
     }
 

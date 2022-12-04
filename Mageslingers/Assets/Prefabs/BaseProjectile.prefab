@@ -72,6 +72,8 @@ MonoBehaviour:
   Direction: {x: 0, y: 0, z: 1}
   Speed: 10
   Owner: {fileID: 0}
+  lifeTime: 3
+  Gravity: -3
 --- !u!54 &6861227878879256823
 Rigidbody:
   m_ObjectHideFlags: 0

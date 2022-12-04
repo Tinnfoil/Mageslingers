@@ -11,6 +11,8 @@ public class CharacterPawn : NetworkPawn
 
     public Item HeldItem;
 
+    public BaseInventory inventory;
+
     [SyncVar]
     public float Health;
 

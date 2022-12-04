@@ -14,6 +14,8 @@ public class Projectile : NetworkActor
     public CharacterPawn Owner;
     public float lifeTime = 3;
 
+    public float Gravity = 0;
+
     Vector3 mouseTarget;
 
     private void Awake()
@@ -57,7 +59,7 @@ public class Projectile : NetworkActor
 
     public void FixedUpdate()
     {
-        //transform.Translate(Direction * Speed * Time.fixedDeltaTime, Space.World);
+        GetComponent<Rigidbody>().velocity += Vector3.up * Gravity * Time.fixedDeltaTime;
     }
 
     public virtual void HandleHit(Collider col, CollisionHitType hitType)

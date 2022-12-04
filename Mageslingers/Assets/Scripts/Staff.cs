@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 
-public class Staff : Item
+public class Staff : WeaponPiece
 {
     public WeaponType WeaponType;
     public GameObject ProjectilePrefab;
@@ -78,10 +78,22 @@ public class Staff : Item
         IsHeld = true;
         Holder = pawn;
         Holder.HeldItem = this;
+        GetComponent<Rigidbody>().isKinematic = true;
         Model.transform.parent = pawn.RightHand;
         Model.transform.localPosition = Vector3.zero;
         Model.transform.localEulerAngles = new Vector3(-90, 0, 0);
         pawn.GetComponent<ThirdPersonController>().WeaponType = (int)WeaponType;
+    }
+
+    [Command(requiresAuthority = false)]
+    public void CmdUnEquip()
+    {
+        RpcUnEquip();
+    }
+    [ClientRpc]
+    void RpcUnEquip()
+    {
+        UnEquip();
     }
 
     [Client]
@@ -89,8 +101,10 @@ public class Staff : Item
     {
         if (!IsHeld) return;
         IsHeld = false;
-        Holder = null;
         Holder.HeldItem = null;
+        Holder = null;
+        GetComponent<Rigidbody>().isKinematic = false;
+        transform.CopyWorldTransform(Model.transform);
         Model.transform.parent = this.transform;
         Model.transform.localPosition = Vector3.zero;
         Model.transform.localEulerAngles = new Vector3(0, 0, 0);
