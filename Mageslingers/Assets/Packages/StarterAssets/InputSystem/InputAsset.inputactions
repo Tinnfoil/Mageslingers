@@ -60,9 +60,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Drop",
+                    "name": "Inventory",
                     "type": "Button",
-                    "id": "b7958eec-23da-4bc7-8521-db5fc6cbddec",
+                    "id": "ca2915bb-5db4-4aac-ac05-e069153895e0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Escape",
+                    "type": "Button",
+                    "id": "170d7e90-3ee8-4556-9852-c1aaad4b8e85",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -270,12 +279,23 @@
                 },
                 {
                     "name": "",
-                    "id": "6c1415d5-6782-4185-a238-1704494e2ddb",
-                    "path": "",
+                    "id": "677e1d5e-f21c-4642-b779-ae1b6e6c0a92",
+                    "path": "<Keyboard>/tab",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "Drop",
+                    "groups": "KeyboardMouse",
+                    "action": "Inventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1bc648da-f8b2-4d44-a0bf-e75c3426d5dc",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "Escape",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

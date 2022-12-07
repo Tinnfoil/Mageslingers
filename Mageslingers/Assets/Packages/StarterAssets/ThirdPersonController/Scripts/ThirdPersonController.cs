@@ -102,7 +102,7 @@ public class ThirdPersonController : NetworkBehaviour
     private Animator _animator;
     private CharacterController _controller;
     private GameObject _mainCamera;
-    public CharacterPawn characterPawn;
+    public PlayerPawn playerPawn;
 
     private const float _threshold = 0.01f;
 
@@ -137,6 +137,8 @@ public class ThirdPersonController : NetworkBehaviour
         if (!hasAuthority) return;
         Initialize();
         InvokeRepeating("SendNetworkData", 0, 5f / NetworkManager.singleton.serverTickRate);
+
+        _playerInput.OnInventoryPressed += HandleInventoryPressed;
     }
 
     public void Initialize()
@@ -163,45 +165,42 @@ public class ThirdPersonController : NetworkBehaviour
     {
         if (!hasAuthority) return;
 
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            PlayerManager.LocalPlayer.CmdEquipWeapon();
-        }
-
         _hasAnimator = TryGetComponent(out _animator);
 
         JumpAndGravity();
         GroundedCheck();
         Move();
 
-
-        if (_playerInput.AltFire && !readyFiring)
+        if (playerPawn.playerState == PlayerState.COMBAT)
         {
-            readyFiring = true;
-            _animator.SetInteger("WeaponType", WeaponType);
-            _animator.SetBool("ReadyFire", true);
-        }
-        else if (!_playerInput.AltFire && readyFiring)
-        {
-            readyFiring = false;
-            _animator.SetBool("ReadyFire", false);
-        }
-        else if (_playerInput.AltFire && _playerInput.Fire && !firing)
-        {
-            firing = true;
-            readyFiring = false;
-            _animator.SetTrigger("Fire");
-            characterPawn.HeldItem?.Interact(mouseTarget);
-            _animator.SetBool("ReadyFire", false);
-            LeanTween.delayedCall(1, () => { firing = false; }); //Cooldown
+            if (_playerInput.AltFire && !readyFiring)
+            {
+                readyFiring = true;
+                _animator.SetInteger("WeaponType", WeaponType);
+                _animator.SetBool("ReadyFire", true);
+            }
+            else if (!_playerInput.AltFire && readyFiring)
+            {
+                readyFiring = false;
+                _animator.SetBool("ReadyFire", false);
+            }
+            else if (_playerInput.AltFire && _playerInput.Fire && !firing)
+            {
+                firing = true;
+                readyFiring = false;
+                _animator.SetTrigger("Fire");
+                playerPawn.HeldItem?.Interact(mouseTarget);
+                _animator.SetBool("ReadyFire", false);
+                LeanTween.delayedCall(1, () => { firing = false; }); //Cooldown
+            }
         }
 
 
         if (Input.GetKeyDown(KeyCode.F))
         {
-            if (characterPawn.HeldItem && characterPawn.HeldItem.GetComponent<Staff>())
+            if (playerPawn.HeldItem && playerPawn.HeldItem.GetComponent<Staff>())
             {
-                characterPawn.HeldItem.GetComponent<Staff>().CmdUnEquip();
+                playerPawn.HeldItem.GetComponent<Staff>().CmdUnEquip();
             }
 
         }
@@ -211,28 +210,36 @@ public class ThirdPersonController : NetworkBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.SphereCast(Camera.main.transform.position, .2f, ray.direction, out hit, 100, LayerMask.GetMask("Item"), QueryTriggerInteraction.Ignore))
             {
-                if (characterPawn.HeldItem == null && hit.collider.GetComponentInParent<Staff>())
+                if (playerPawn.HeldItem == null && hit.collider.GetComponentInParent<Staff>())
                 {
-                    hit.collider.GetComponentInParent<Staff>().CmdEquip(characterPawn.netIdentity);
+                    hit.collider.GetComponentInParent<Staff>().CmdEquip(playerPawn.netIdentity);
                     //characterPawn.HeldItem.GetComponent<Staff>().CmdUnEquip();
                 }
-                else if (hit.collider.GetComponentInParent<PickupableActor>())
+                else if (hit.collider.GetComponentInParent<Item>())
                 {
-                    hit.collider.GetComponentInParent<PickupableActor>().Pickup(characterPawn, characterPawn.inventory);
+                    Item item = hit.collider.GetComponentInParent<Item>();
+                    item.Pickup(playerPawn, playerPawn.inventory);
+                    PlayerUIManager.instance.playerInventoryUI.AddItem(item);
                 }
             }
-           
+
         }
 
         if (Input.GetKeyDown(KeyCode.H))
         {
-            foreach (PickupableActor item in characterPawn.inventory.Items)
+            foreach (Item item in playerPawn.inventory.Items)
             {
-                item.Drop(characterPawn, characterPawn.inventory);
+                item.Drop(playerPawn, playerPawn.inventory);
+                PlayerUIManager.instance.playerInventoryUI.RemoveItem(item);
             }
 
         }
 
+    }
+
+    public void HandleInventoryPressed()
+    {
+        PlayerUIManager.instance.playerInventoryUI.Toggle(.4f);
     }
 
     private void LateUpdate()
@@ -365,6 +372,8 @@ public class ThirdPersonController : NetworkBehaviour
 
     private void Move()
     {
+        if (playerPawn.playerState != PlayerState.COMBAT) return;
+
         if (Camera.main)
         {
             float forwardBias = 1 - (Camera.main.transform.eulerAngles.x / 90f);
@@ -446,15 +455,22 @@ public class ThirdPersonController : NetworkBehaviour
             targetDirection = moveVector;
         }
 
+
         // move the player
         _controller.Move(targetDirection.normalized * (_speed * Time.deltaTime) +
-                         new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+                     new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
 
+
+        SetMoveAnimationValues(_animationBlend, inputMagnitude);
+    }
+
+    public void SetMoveAnimationValues(float speed, float magnitude)
+    {
         // update animator if using character
         if (_hasAnimator)
         {
             _animator.SetFloat(_animIDSpeed, _animationBlend);
-            _animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
+            _animator.SetFloat(_animIDMotionSpeed, magnitude);
         }
     }
 
@@ -568,6 +584,11 @@ public class ThirdPersonController : NetworkBehaviour
         {
             AudioSource.PlayClipAtPoint(LandingAudioClip, transform.TransformPoint(_controller.center), FootstepAudioVolume);
         }
+    }
+
+    public void OnDestroy()
+    {
+        _playerInput.OnInventoryPressed -= HandleInventoryPressed;
     }
 
     private void OnAnimatorIK(int layerIndex)

@@ -2427,6 +2427,7 @@ MonoBehaviour:
   Health: 0
   controller: {fileID: 8989562773226680420}
   cameraAttach: {fileID: 3378471371532775924}
+  playerState: 0
 --- !u!114 &6409746307186110950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2456,8 +2457,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  MoveSpeed: 2
-  SprintSpeed: 5.335
+  MoveSpeed: 5.335
+  SprintSpeed: 2
   RotationSmoothTime: 0.12
   SpeedChangeRate: 10
   LandingAudioClip: {fileID: 8300000, guid: ff697d3070687ce4583faa0561a145a2, type: 3}
@@ -2489,7 +2490,7 @@ MonoBehaviour:
   CameraAngleOverride: 0
   LockCameraPosition: 0
   _playerInput: {fileID: 0}
-  characterPawn: {fileID: 354203185243623964}
+  playerPawn: {fileID: 354203185243623964}
   LookTime: 1
   CurrentLookTime: 0
   ChestTransform: {fileID: 7219445342575057590}

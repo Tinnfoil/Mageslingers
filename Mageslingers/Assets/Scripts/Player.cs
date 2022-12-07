@@ -9,7 +9,6 @@ public class Player : NetworkActor
 
     [HideInInspector] public PlayerPawn PlayerPawn;
 
-
     [Header("TESTING")]
     public GameObject Staff;
 
@@ -100,7 +99,7 @@ public class Player : NetworkActor
         GameObject staff = Instantiate(Staff);
         NetworkServer.Spawn(staff);
         LeanTween.delayedCall(1, () => staff.GetComponent<Staff>().CmdEquip(PlayerPawn.netIdentity));
-        
+
     }
 
     /*

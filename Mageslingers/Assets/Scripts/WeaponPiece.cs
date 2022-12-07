@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class WeaponPiece : Item
 {
+    public List<ConnectionPoint> connectionPoints = new List<ConnectionPoint>();
+    public ConnectionPoint BottomConnection; 
     // Start is called before the first frame update
     public override void Start()
     {
@@ -14,6 +16,11 @@ public class WeaponPiece : Item
     public override void Update()
     {
         base.Update();
+    }
+
+    public void ConnectToPiece(WeaponPiece piece)
+    {
+        
     }
 
 }

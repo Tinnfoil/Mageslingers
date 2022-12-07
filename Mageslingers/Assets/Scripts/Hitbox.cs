@@ -53,7 +53,7 @@ public class Hitbox : MonoBehaviour
             OnHitboxEnter?.Invoke(other, CollisionHitType.Enviroment);
         }
 
-        Debug.Log("Trigger");
+        //Debug.Log("Trigger");
     }
 
     public void OnTriggerExit(Collider other)

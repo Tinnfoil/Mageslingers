@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System;
 
 public class InputManager : MonoBehaviour
 {
     public PlayerInput playerInput;
 
+    public Action OnInventoryPressed;
     public bool IsControlSet;
 
     public bool Fire;
@@ -15,6 +17,8 @@ public class InputManager : MonoBehaviour
     public Vector2 Look;
     public bool Sprinting;
     public bool Jump;
+    public bool Inventory;
+    public bool Escape;
 
     public bool IsCurrentDeviceMouse
     {
@@ -77,6 +81,18 @@ public class InputManager : MonoBehaviour
 
     }
 
+    public void OnInventory(InputAction.CallbackContext value)
+    {
+        //Debug.Log("Inventory:" + value.performed);
+        Inventory = value.performed;
+        OnInventoryPressed?.Invoke();
+    }
+    public void OnEscape(InputAction.CallbackContext value)
+    {
+        //Debug.Log("OnJump:" + value.performed);
+        Escape = value.performed;
+    }
+
     public void BindInput()
     {
         if (IsControlSet) return;
@@ -93,6 +109,10 @@ public class InputManager : MonoBehaviour
         Jump.performed += OnJump;
         InputAction Sprint = playerInput.currentActionMap.FindAction("Sprint");
         Sprint.performed += OnSprint; Sprint.canceled += OnSprint;
+        InputAction Inventory = playerInput.currentActionMap.FindAction("Inventory");
+        Inventory.performed += OnInventory;
+        InputAction Escape = playerInput.currentActionMap.FindAction("Escape");
+        Escape.performed += OnEscape;
 
         IsControlSet = true;
     }
@@ -104,6 +124,8 @@ public class InputManager : MonoBehaviour
         Look = default(Vector2);
         Jump = default(bool);
         Sprinting = default(bool);
+        Inventory = default(bool);
+        Escape = default(bool);
 
         playerInput.currentActionMap.FindAction("Move").performed -= OnMove; playerInput.currentActionMap.FindAction("Move").canceled -= OnMove;
         playerInput.currentActionMap.FindAction("Look").performed -= OnLook; playerInput.currentActionMap.FindAction("Look").canceled -= OnLook;
@@ -111,6 +133,8 @@ public class InputManager : MonoBehaviour
         playerInput.currentActionMap.FindAction("Sprint").performed -= OnSprint; playerInput.currentActionMap.FindAction("Sprint").canceled -= OnSprint;
         playerInput.currentActionMap.FindAction("Fire").performed -= OnFire; playerInput.currentActionMap.FindAction("Fire").canceled -= OnFire;
         playerInput.currentActionMap.FindAction("AltFire").performed -= OnAltFire; playerInput.currentActionMap.FindAction("AltFire").canceled -= OnAltFire;
+        playerInput.currentActionMap.FindAction("Inventory").performed -= OnInventory;
+        playerInput.currentActionMap.FindAction("Escape").performed -= OnEscape;
         IsControlSet = false;
     }
 
