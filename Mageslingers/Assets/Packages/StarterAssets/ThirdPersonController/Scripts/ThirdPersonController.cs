@@ -127,6 +127,8 @@ public class ThirdPersonController : NetworkBehaviour
     public bool firing;
     public bool readyFiring;
 
+    public Transform ActiveUIItem;
+
     private void Awake()
     {
 
@@ -233,6 +235,37 @@ public class ThirdPersonController : NetworkBehaviour
                 PlayerUIManager.instance.playerInventoryUI.RemoveItem(item);
             }
 
+        }
+
+        if(ActiveUIItem != null)
+        {
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.SphereCast(Camera.main.transform.position, .2f, ray.direction, out hit, 100, LayerMask.GetMask("Item"), QueryTriggerInteraction.Ignore))
+            {
+                Debug.Log(hit.collider);
+                Debug.Log(hit.collider.transform.parent);
+                if (hit.collider.GetComponentInParent<StaffModel>())
+                {
+                    Staff staff = hit.collider.GetComponentInParent<StaffModel>().OwningStaff;
+                    ActiveUIItem.transform.position = hit.point;
+                    if (_playerInput.Fire)
+                    {
+                        ConnectionPoint cp = staff.GetClosestConnectionPoint(hit.point);
+                        staff.ConnectPiece(cp, ActiveUIItem.GetComponent<WeaponPiece>());
+                        PlayerUIManager.instance.RemoveItem(ActiveUIItem.GetComponent<WeaponPiece>());
+                        ActiveUIItem = null;
+                    }
+
+                }
+
+            }
+            else if (Physics.SphereCast(Camera.main.transform.position, .2f, ray.direction, out hit, 100, LayerMask.GetMask("Default"), QueryTriggerInteraction.Ignore))
+            {
+                ActiveUIItem.transform.position = hit.point;
+            }
+           
         }
 
     }

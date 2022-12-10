@@ -27,7 +27,7 @@ public class Player : NetworkActor
     public override void OnStartLocalPlayer()
     {
         base.OnStartLocalPlayer();
-        if (isLocalPlayer && PlayerManager.instance) { PlayerManager.LocalPlayer = this; PlayerManager.instance.RequestPawnData(netIdentity); }
+        if (isLocalPlayer && PlayerManager.instance) { PlayerManager.LocalPlayer = this; PlayerManager.instance.OnLocalPlayerSet?.Invoke(PlayerManager.LocalPlayer); PlayerManager.instance.RequestPawnData(netIdentity); }
     }
 
     public override void OnStartClient()

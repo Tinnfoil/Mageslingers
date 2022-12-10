@@ -7,6 +7,7 @@ public class Item : PickupableActor
 {
     [HideInInspector] public CharacterPawn Holder; // If not null, this item is "owned" by the player
     public Transform Model;
+    public Transform ColliderContainer;
     public bool IsHeld; // If held, it is the active item in the players hand
 
     public Sprite Icon;

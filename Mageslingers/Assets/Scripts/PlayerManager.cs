@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
+using System;
 public class PlayerManager : NetworkBehaviour
 {
     public static PlayerManager instance;
@@ -11,6 +12,8 @@ public class PlayerManager : NetworkBehaviour
     
     
     public List<PlayerPawn> playerPawns;
+
+    public Action<Player> OnLocalPlayerSet;
 
     public void Awake()
     {

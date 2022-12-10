@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
+using System;
 
 public class PlayerPawn : CharacterPawn
 {
@@ -10,6 +11,7 @@ public class PlayerPawn : CharacterPawn
 
     public PlayerState playerState = PlayerState.COMBAT;
 
+    public Action<PlayerState> OnPlayerStateChanged;
     public override void Start()
     {
         base.Start();
@@ -46,6 +48,8 @@ public class PlayerPawn : CharacterPawn
                 playerState = PlayerState.CRAFTING;
                 break;
         }
+
+        OnPlayerStateChanged?.Invoke(state);
     }
 
 }

@@ -8,7 +8,7 @@ public class InputManager : MonoBehaviour
 {
     public PlayerInput playerInput;
 
-    public Action OnInventoryPressed;
+    public Action OnInventoryPressed, OnFirePressed;
     public bool IsControlSet;
 
     public bool Fire;
@@ -54,6 +54,7 @@ public class InputManager : MonoBehaviour
     public void OnFire(InputAction.CallbackContext value)
     {
         Fire = value.performed;
+        OnFirePressed?.Invoke();
     }
     public void OnAltFire(InputAction.CallbackContext value)
     {

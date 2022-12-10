@@ -9,12 +9,33 @@ public class PlayerUIManager : MonoBehaviour
 
     public bool Crafting = false;
 
+    public ThirdPersonController localController;
+
     public void Awake()
     {
         if(instance == null)
         {
             instance = this;
         }
+
+        if(PlayerManager.LocalPlayer == null)
+        {
+            PlayerManager.instance.OnLocalPlayerSet += SetUp;
+        }
+        else
+        {
+            localController = PlayerManager.LocalPlayer.PlayerPawn.controller;
+        }
+    }
+
+    private void Start()
+    {
+    }
+
+    public void SetUp(Player player)
+    {
+        localController = player.PlayerPawn.controller;
+        PlayerManager.instance.OnLocalPlayerSet -= SetUp;
     }
 
     public void AddItem(Item item)

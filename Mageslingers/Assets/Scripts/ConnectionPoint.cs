@@ -6,6 +6,9 @@ public class ConnectionPoint : MonoBehaviour
 {
     public bool Bottom = false;
     public bool Open = true;
+    public ConnectionType connectionType = ConnectionType.BOTTOM;
+
+    [Header("-Runtime-")]
     public ConnectionPoint connection;
 
     public void Connect(ConnectionPoint targetPoint)
@@ -24,4 +27,21 @@ public class ConnectionPoint : MonoBehaviour
         Open = true;
     }
 
+    public WeaponPieceData GetOwningWeaponData()
+    {
+        return GetComponentInParent<WeaponPieceData>();
+    }
+
+    public int GetConnectionID()
+    {
+        return ((int)connectionType);
+    }
+}
+
+public enum ConnectionType : byte
+{
+    BOTTOM = 0,
+    LEFT = 1,
+    UP = 2,
+    RIGHT = 3
 }

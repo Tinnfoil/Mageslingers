@@ -213,8 +213,13 @@ PrefabInstance:
     - target: {fileID: 3535107730920881136, guid: df5c8ad7ae635e04ab03f1efdbdf3521,
         type: 3}
       propertyPath: connectionPoints.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3535107730920881136, guid: df5c8ad7ae635e04ab03f1efdbdf3521,
+        type: 3}
+      propertyPath: connectionPoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 1240473895881556417}
     - target: {fileID: 3535107730920881136, guid: df5c8ad7ae635e04ab03f1efdbdf3521,
         type: 3}
       propertyPath: connectionPoints.Array.data[1]
@@ -283,7 +288,7 @@ PrefabInstance:
     - target: {fileID: 8655511393327990607, guid: df5c8ad7ae635e04ab03f1efdbdf3521,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.6
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects:

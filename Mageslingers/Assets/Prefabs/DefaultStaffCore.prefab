@@ -77,6 +77,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Bottom: 0
   Open: 1
+  connectionType: 2
   connection: {fileID: 0}
 --- !u!1001 &8220344995228949671
 PrefabInstance:
@@ -168,6 +169,43 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8220344995228949671}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2963352657784446479 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6560471091443892904, guid: 1e927832801c92e46a3608bf42f10012,
+    type: 3}
+  m_PrefabInstance: {fileID: 8220344995228949671}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &159386791845909621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2963352657784446479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dafd9484e7f952647833b58c299ed340, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OwningWeaponPiece: {fileID: 3535107730920881136}
+  connectionPoints:
+  - {fileID: 2618321648422500568}
+  BottomConnection: {fileID: 8470141966731621235}
+  ID: -1
+  Data: 
+--- !u!114 &781846173911963358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2963352657784446479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbfcabe09ea84ae47a183d27c34c0807, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OwningStaff: {fileID: 3535107730920881136}
 --- !u!1 &5163326279263403583 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3869535309308306072, guid: 1e927832801c92e46a3608bf42f10012,
@@ -190,17 +228,18 @@ MonoBehaviour:
   syncInterval: 0.1
   Holder: {fileID: 0}
   Model: {fileID: 1334768324177230417}
+  ColliderContainer: {fileID: 8747861649651005410}
   IsHeld: 0
   Icon: {fileID: 21300000, guid: 77bab8ad5cda8ca45a8d4aee7cc47ab8, type: 3}
-  connectionPoints:
-  - {fileID: 8470141966731621235}
-  BottomConnection: {fileID: 8470141966731621235}
+  weaponData: {fileID: 159386791845909621}
   WeaponType: 1
   ProjectilePrefab: {fileID: 2743711430085315796, guid: 055119e1356e2ed4280f3d30d8b689da,
     type: 3}
   CurrentProjectile: {fileID: 0}
   ProjectileSpawnPoint: {fileID: 477550737148503406}
   FireDelay: 0.2
+  OpenConnections: []
+  StaffData: 
 --- !u!114 &8470141966731621235 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 549286347117080532, guid: 1e927832801c92e46a3608bf42f10012,
@@ -213,3 +252,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abcd51f42e1923242816a54cdac6f64a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &8747861649651005410 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 824772165621377861, guid: 1e927832801c92e46a3608bf42f10012,
+    type: 3}
+  m_PrefabInstance: {fileID: 8220344995228949671}
+  m_PrefabAsset: {fileID: 0}

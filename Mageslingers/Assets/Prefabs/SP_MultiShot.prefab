@@ -212,6 +212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Bottom: 0
   Open: 1
+  connectionType: 2
   connection: {fileID: 0}
 --- !u!1001 &8303657758727904439
 PrefabInstance:
@@ -235,13 +236,18 @@ PrefabInstance:
     - target: {fileID: 794263199598832861, guid: 7b104c61beedc494e85123147b902193,
         type: 3}
       propertyPath: connectionPoints.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 794263199598832861, guid: 7b104c61beedc494e85123147b902193,
+        type: 3}
+      propertyPath: connectionPoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 3735990099355715152}
     - target: {fileID: 794263199598832861, guid: 7b104c61beedc494e85123147b902193,
         type: 3}
       propertyPath: connectionPoints.Array.data[1]
       value: 
-      objectReference: {fileID: 3735990099355715152}
+      objectReference: {fileID: 0}
     - target: {fileID: 989089720984419075, guid: 7b104c61beedc494e85123147b902193,
         type: 3}
       propertyPath: m_RootOrder
@@ -297,6 +303,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1717915544289788186, guid: 7b104c61beedc494e85123147b902193,
+        type: 3}
+      propertyPath: connectionPoints.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1717915544289788186, guid: 7b104c61beedc494e85123147b902193,
+        type: 3}
+      propertyPath: connectionPoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 3735990099355715152}
     - target: {fileID: 4430474838622185942, guid: 7b104c61beedc494e85123147b902193,
         type: 3}
       propertyPath: m_LocalPosition.y

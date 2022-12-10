@@ -98,11 +98,10 @@ MonoBehaviour:
   syncInterval: 0.1
   Holder: {fileID: 0}
   Model: {fileID: 6241034768273810533}
+  ColliderContainer: {fileID: 4430474838622185942}
   IsHeld: 0
   Icon: {fileID: 21300000, guid: 77bab8ad5cda8ca45a8d4aee7cc47ab8, type: 3}
-  connectionPoints:
-  - {fileID: 3571756426772540743}
-  BottomConnection: {fileID: 3571756426772540743}
+  weaponData: {fileID: 1717915544289788186}
 --- !u!114 &3571756426772540743 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 549286347117080532, guid: 1e927832801c92e46a3608bf42f10012,
@@ -115,9 +114,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abcd51f42e1923242816a54cdac6f64a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &4430474838622185942 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 824772165621377861, guid: 1e927832801c92e46a3608bf42f10012,
+    type: 3}
+  m_PrefabInstance: {fileID: 3895077727733826195}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6241034768273810533 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6958770060736259830, guid: 1e927832801c92e46a3608bf42f10012,
     type: 3}
   m_PrefabInstance: {fileID: 3895077727733826195}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7855792037669879867 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6560471091443892904, guid: 1e927832801c92e46a3608bf42f10012,
+    type: 3}
+  m_PrefabInstance: {fileID: 3895077727733826195}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1717915544289788186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7855792037669879867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dafd9484e7f952647833b58c299ed340, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OwningWeaponPiece: {fileID: 794263199598832861}
+  connectionPoints: []
+  BottomConnection: {fileID: 3571756426772540743}
+  ID: 2
+  Data: 
