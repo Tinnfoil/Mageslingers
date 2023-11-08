@@ -12,10 +12,12 @@ public class GameInitializer : MonoBehaviour
     private void Awake()
     {
        
-        if(AutoHostOnPlay && GameManager.instance == null)
+        if(AutoHostOnPlay && GameManager.instance)
         {
-            Instantiate(NetworkObjectPrefab);
-            SceneManager.LoadScene(OnlineScene, LoadSceneMode.Additive);
+            GameObject g = Instantiate(NetworkObjectPrefab);
+            //g.GetComponent<GameNetworkManager>().onlineScene = SceneManager.GetActiveScene().name;
+            //SceneManager.LoadScene(OnlineScene, LoadSceneMode.Additive);
+            //SceneManager.SetActiveScene(SceneManager.GetSceneByName(OnlineScene));
         }
     }
     // Start is called before the first frame update

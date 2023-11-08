@@ -127,6 +127,11 @@ public class ThirdPersonController : NetworkBehaviour
     public bool firing;
     public bool readyFiring;
 
+    public bool Rolling;
+    public float currRollTime = .8f;
+    public float rollTime = .8f;
+    public Vector3 rollVector = new Vector3();
+
     public Transform ActiveUIItem;
 
     private void Awake()
@@ -195,8 +200,28 @@ public class ThirdPersonController : NetworkBehaviour
                 _animator.SetBool("ReadyFire", false);
                 LeanTween.delayedCall(1, () => { firing = false; }); //Cooldown
             }
+
+            if (_playerInput.Sprinting && !Rolling)
+            {
+                Rolling = true;
+                rollVector = moveVector;
+                currRollTime = rollTime;
+                float rollDot = 0;
+                _animator.SetFloat("RollDot", rollDot);
+                _animator.SetBool("Rolling", true);
+            }
         }
 
+        if (Rolling)
+        {
+            currRollTime -= Time.deltaTime;
+            if (currRollTime <= 0)
+            {
+                Rolling = false;
+                currRollTime = rollTime;
+                _animator.SetBool("Rolling", false);
+            }
+        }
 
         if (Input.GetKeyDown(KeyCode.F))
         {
@@ -237,15 +262,15 @@ public class ThirdPersonController : NetworkBehaviour
 
         }
 
-        if(ActiveUIItem != null)
+        if (ActiveUIItem != null)
         {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
             if (Physics.SphereCast(Camera.main.transform.position, .2f, ray.direction, out hit, 100, LayerMask.GetMask("Item"), QueryTriggerInteraction.Ignore))
             {
-                Debug.Log(hit.collider);
-                Debug.Log(hit.collider.transform.parent);
+                //Debug.Log(hit.collider);
+                //Debug.Log(hit.collider.transform.parent);
                 if (hit.collider.GetComponentInParent<StaffModel>())
                 {
                     Staff staff = hit.collider.GetComponentInParent<StaffModel>().OwningStaff;
@@ -265,45 +290,50 @@ public class ThirdPersonController : NetworkBehaviour
             {
                 ActiveUIItem.transform.position = hit.point;
             }
-           
+
         }
 
     }
 
     public void HandleInventoryPressed()
     {
+        PlayerUIManager.instance.BeginCraft();
         PlayerUIManager.instance.playerInventoryUI.Toggle(.4f);
     }
 
     private void LateUpdate()
     {
-        if (!hasAuthority) { aimVector = Vector3.Slerp(aimVector, targetAimVector, 5 * Time.deltaTime); }
-        if (CurrentLookTime > 0)
+        if (!Rolling)
         {
-            // Upper body anims
-            Vector3 t = ChestTransform.localEulerAngles;
-            ChestTransform.LookAt(ChestTransform.transform.position + aimVector);
-
-            float x = ChestTransform.localEulerAngles.x > 180 ? ChestTransform.localEulerAngles.x - 360 : ChestTransform.localEulerAngles.x;
-            float y = ChestTransform.localEulerAngles.y > 180 ? ChestTransform.localEulerAngles.y - 360 : ChestTransform.localEulerAngles.y;
-
-            if (moveVector == Vector3.zero)
+            if (!hasAuthority) { aimVector = Vector3.Slerp(aimVector, targetAimVector, 5 * Time.deltaTime); }
+            if (CurrentLookTime > 0)
             {
-                ChestTransform.localEulerAngles = new Vector3(Mathf.Clamp(x, -0, 10), Mathf.Clamp(y, -90, 90), ChestTransform.localEulerAngles.z);
-            }
-            ChestTransform.localEulerAngles = new Vector3(Mathf.Clamp(x, -0, 10), ChestTransform.localEulerAngles.y, ChestTransform.localEulerAngles.z);
-        }
-        else if (CurrentLookTime <= 0)
-        {
-            targetChestEulers = ChestTransform.localEulerAngles;
-            aimVector = Vector3.Slerp(aimVector, moveVector, 5 * Time.deltaTime);
-        }
-        CurrentLookTime -= Time.deltaTime;
+                // Upper body anims
+                Vector3 t = ChestTransform.localEulerAngles;
+                ChestTransform.LookAt(ChestTransform.transform.position + aimVector);
 
-        if (CurrentLookTime <= -1 && !hasAuthority)
-        {
-            aimVector = transform.forward;
+                float x = ChestTransform.localEulerAngles.x > 180 ? ChestTransform.localEulerAngles.x - 360 : ChestTransform.localEulerAngles.x;
+                float y = ChestTransform.localEulerAngles.y > 180 ? ChestTransform.localEulerAngles.y - 360 : ChestTransform.localEulerAngles.y;
+
+                if (moveVector == Vector3.zero)
+                {
+                    ChestTransform.localEulerAngles = new Vector3(Mathf.Clamp(x, -0, 10), Mathf.Clamp(y, -90, 90), ChestTransform.localEulerAngles.z);
+                }
+                ChestTransform.localEulerAngles = new Vector3(Mathf.Clamp(x, -0, 10), ChestTransform.localEulerAngles.y, ChestTransform.localEulerAngles.z);
+            }
+            else if (CurrentLookTime <= 0)
+            {
+                targetChestEulers = ChestTransform.localEulerAngles;
+                aimVector = Vector3.Slerp(aimVector, moveVector, 5 * Time.deltaTime);
+            }
+            CurrentLookTime -= Time.deltaTime;
+
+            if (CurrentLookTime <= -1 && !hasAuthority)
+            {
+                aimVector = transform.forward;
+            }
         }
+
 
         if (!hasAuthority) return;
         CameraRotation();
@@ -315,22 +345,27 @@ public class ThirdPersonController : NetworkBehaviour
         {
             mouseTarget = hit.point;
         }
-        if (_playerInput.AltFire)
+
+        if (!Rolling)
         {
-            CurrentLookTime = LookTime;
-            aimVector = (hit.point - transform.position).normalized;
-            aimVector = new Vector3(aimVector.x, 0, aimVector.z);
-            SendLookData = true;
-        }
+            if (_playerInput.AltFire)
+            {
+                CurrentLookTime = LookTime;
+                aimVector = (hit.point - transform.position).normalized;
+                aimVector = new Vector3(aimVector.x, 0, aimVector.z);
+                SendLookData = true;
+            }
 
 
-        if (_hasAnimator)
-        {
-            Forward = TurnCurve.Evaluate(Vector3.Dot(moveVector, aimVector.normalized));
-            _animator.SetFloat(_animIDForward, Forward);
-            Strafe = _playerInput.Move.x >= 0 ? (aimVector.z > 0 ? 1 : -1) : (aimVector.z > 0 ? -1 : 1);
-            _animator.SetFloat(_animIDStrafe, Strafe);
+            if (_hasAnimator)
+            {
+                Forward = TurnCurve.Evaluate(Vector3.Dot(moveVector, aimVector.normalized));
+                _animator.SetFloat(_animIDForward, Forward);
+                Strafe = _playerInput.Move.x >= 0 ? (aimVector.z > 0 ? 1 : -1) : (aimVector.z > 0 ? -1 : 1);
+                _animator.SetFloat(_animIDStrafe, Strafe);
+            }
         }
+
     }
 
     public void SendNetworkData()
@@ -417,7 +452,12 @@ public class ThirdPersonController : NetworkBehaviour
 
         //Debug.Log("Move");
         // set target speed based on move speed, sprint speed and if sprint is pressed
-        float targetSpeed = _playerInput.Sprinting ? SprintSpeed : MoveSpeed;
+        float targetSpeed = (_playerInput.AltFire && !Rolling) ? SprintSpeed : MoveSpeed;
+
+        if (Rolling)
+        {
+            targetSpeed *= (1 * (currRollTime / rollTime) + 1);
+        }
 
         // a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 
@@ -458,13 +498,13 @@ public class ThirdPersonController : NetworkBehaviour
         // if there is a move input rotate player when the player is moving
         if (_playerInput.Move != Vector2.zero && _mainCamera)
         {
-            _targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg +
-                              _mainCamera.transform.eulerAngles.y;
+            float directionForRotation = Rolling ? Mathf.Atan2(rollVector.x, rollVector.z) : Mathf.Atan2(inputDirection.x, inputDirection.z);
+            _targetRotation = directionForRotation * Mathf.Rad2Deg + _mainCamera.transform.eulerAngles.y;
             float rotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, _targetRotation, ref _rotationVelocity,
                 RotationSmoothTime);
 
             // rotate to face input direction relative to camera position
-            if (CurrentLookTime <= -1)
+            if (CurrentLookTime <= -1 || Rolling)
             {
                 transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
             }
@@ -485,7 +525,7 @@ public class ThirdPersonController : NetworkBehaviour
         Vector3 targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
         if (Camera.main)
         {
-            targetDirection = moveVector;
+            targetDirection = Rolling ? rollVector : moveVector;
         }
 
 
@@ -621,7 +661,7 @@ public class ThirdPersonController : NetworkBehaviour
 
     public void OnDestroy()
     {
-        _playerInput.OnInventoryPressed -= HandleInventoryPressed;
+        if (_playerInput) _playerInput.OnInventoryPressed -= HandleInventoryPressed;
     }
 
     private void OnAnimatorIK(int layerIndex)

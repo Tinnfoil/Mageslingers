@@ -14,6 +14,7 @@ public class PlayerManager : NetworkBehaviour
     public List<PlayerPawn> playerPawns;
 
     public Action<Player> OnLocalPlayerSet;
+    public Action<PlayerPawn> OnLocalPlayerPawnSet;
 
     public void Awake()
     {
@@ -72,6 +73,11 @@ public class PlayerManager : NetworkBehaviour
             }
         }
 
+    }
+
+    public void InvokePlayerPawnSet(PlayerPawn pawn)
+    {
+        OnLocalPlayerPawnSet?.Invoke(pawn);
     }
 
     public void HandleSceneLoaded()

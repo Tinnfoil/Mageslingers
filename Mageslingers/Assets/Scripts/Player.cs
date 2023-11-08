@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
+using System;
 
 public class Player : NetworkActor
 {
@@ -11,6 +12,8 @@ public class Player : NetworkActor
 
     [Header("TESTING")]
     public GameObject Staff;
+
+    public Action<PlayerPawn> OnPlayerPawnSet;
 
     public override void Start()
     {
@@ -27,7 +30,7 @@ public class Player : NetworkActor
     public override void OnStartLocalPlayer()
     {
         base.OnStartLocalPlayer();
-        if (isLocalPlayer && PlayerManager.instance) { PlayerManager.LocalPlayer = this; PlayerManager.instance.OnLocalPlayerSet?.Invoke(PlayerManager.LocalPlayer); PlayerManager.instance.RequestPawnData(netIdentity); }
+        if (isLocalPlayer && PlayerManager.instance) { PlayerManager.LocalPlayer = this; PlayerManager.instance.OnLocalPlayerSet?.Invoke(this); PlayerManager.instance.RequestPawnData(netIdentity); }
     }
 
     public override void OnStartClient()
@@ -75,7 +78,8 @@ public class Player : NetworkActor
     public void SpawnPlayerPawn_ClientRpc(NetworkIdentity pawn)
     {
         PlayerPawn = pawn.GetComponent<PlayerPawn>();
-
+        OnPlayerPawnSet?.Invoke(PlayerPawn) ;
+        if (isLocalPlayer) { PlayerManager.instance.InvokePlayerPawnSet(PlayerPawn); }
     }
 
 

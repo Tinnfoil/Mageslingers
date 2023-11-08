@@ -6,7 +6,8 @@ using System;
 [RequireComponent(typeof(Collider))]
 public class Hitbox : MonoBehaviour
 {
-    public Action<Collider, CollisionHitType> OnHitboxEnter, OnHitboxExit;
+    public Action<Collider, CollisionHitType, HitInfo> OnHitboxEnter;
+    public Action<Collider, CollisionHitType> OnHitboxExit;
 
     public HashSet<NetworkPawn> hitPawns = new HashSet<NetworkPawn>();
 
@@ -36,6 +37,11 @@ public class Hitbox : MonoBehaviour
         timePassed += Time.deltaTime;
     }
 
+    public HitInfo GetHitInfo()
+    {
+        return new HitInfo { hitDirection = transform.forward, hitpoint = this.transform.position };
+    }
+
     public void OnTriggerEnter(Collider other)
     {
         CharacterPawn np = other.GetComponentInParent<CharacterPawn>();
@@ -44,13 +50,20 @@ public class Hitbox : MonoBehaviour
             if (!hitPawns.Contains(np))
             {
                 hitPawns.Add(np);
-                OnHitboxEnter?.Invoke(other, CollisionHitType.Pawn);
+                OnHitboxEnter?.Invoke(other, CollisionHitType.Pawn, GetHitInfo());
             }
 
         }
         else if (np == null)
         {
-            OnHitboxEnter?.Invoke(other, CollisionHitType.Enviroment);
+            if (other.GetComponentInParent<IHealth>() != null)
+            {
+                OnHitboxEnter?.Invoke(other, CollisionHitType.Destructable, GetHitInfo());
+            }
+            else
+            {
+                OnHitboxEnter?.Invoke(other, CollisionHitType.Enviroment, GetHitInfo());
+            }
         }
 
         //Debug.Log("Trigger");
@@ -69,7 +82,14 @@ public class Hitbox : MonoBehaviour
         }
         else if (np == null)
         {
-            OnHitboxExit?.Invoke(other, CollisionHitType.Enviroment);
+            if (other.GetComponentInParent<IHealth>() != null)
+            {
+                OnHitboxExit?.Invoke(other, CollisionHitType.Destructable);
+            }
+            else
+            {
+                OnHitboxExit?.Invoke(other, CollisionHitType.Enviroment);
+            }
         }
     }
 
@@ -84,6 +104,7 @@ public class Hitbox : MonoBehaviour
 public class HitboxData
 {
     public float HealthChange = 0;
+    public AppliedStatus[] AppliedStatuses;
     public bool EffectsOwner = false;
     public bool DestroyOnHit = true;
 }
@@ -104,5 +125,6 @@ public class DOTHitboxData : HitboxData
 public enum CollisionHitType
 {
     Pawn,
-    Enviroment
+    Enviroment,
+    Destructable
 }

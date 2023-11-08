@@ -37,6 +37,7 @@ public class Projectile : NetworkActor
         Model.SetActive(true);
 
         Vector3 direction = new Vector3(mouseTarget.x, 0, mouseTarget.z) - new Vector3(Owner.transform.position.x, 0, Owner.transform.position.z);
+        transform.transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
         transform.position = Owner.transform.position + Vector3.up + direction.normalized / 2f ;
         Direction = direction.normalized;
         if (owner) { hitbox.ActivateHitbox(); LeanTween.delayedCall(lifeTime, () => CmdDestroyMe()); }
@@ -62,11 +63,15 @@ public class Projectile : NetworkActor
         GetComponent<Rigidbody>().velocity += Vector3.up * Gravity * Time.fixedDeltaTime;
     }
 
-    public virtual void HandleHit(Collider col, CollisionHitType hitType)
+    public virtual void HandleHit(Collider col, CollisionHitType hitType, HitInfo hitInfo)
     {
         if(hitType == CollisionHitType.Pawn)
         {
             hitbox.TriggerEffect(col.GetComponentInParent<CharacterPawn>());
+        }
+        else if(hitType == CollisionHitType.Destructable)
+        {
+            col.GetComponentInParent<IHealth>().TakeDamage(hitbox.hitBoxData, hitInfo);
         }
         if (hitbox.hitBoxData.DestroyOnHit) 
         {
@@ -98,4 +103,11 @@ public class Projectile : NetworkActor
         LeanTween.cancel(gameObject);
         NetworkServer.Destroy(gameObject);
     }
+}
+
+[System.Serializable]
+public struct HitInfo
+{
+    public Vector3 hitpoint;
+    public Vector3 hitDirection;
 }

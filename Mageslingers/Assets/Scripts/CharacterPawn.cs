@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 
-public class CharacterPawn : NetworkPawn
+public class CharacterPawn : BasePawn
 {
     [Header("Transforms")]
     public Transform RightHand;

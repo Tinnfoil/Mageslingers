@@ -18,9 +18,13 @@ public class PlayerUIManager : MonoBehaviour
             instance = this;
         }
 
-        if(PlayerManager.LocalPlayer == null)
+    }
+
+    private void Start()
+    {
+        if (PlayerManager.LocalPlayer == null)
         {
-            PlayerManager.instance.OnLocalPlayerSet += SetUp;
+            PlayerManager.instance.OnLocalPlayerPawnSet += SetUp;
         }
         else
         {
@@ -28,14 +32,10 @@ public class PlayerUIManager : MonoBehaviour
         }
     }
 
-    private void Start()
+    public void SetUp(PlayerPawn playerpawn)
     {
-    }
-
-    public void SetUp(Player player)
-    {
-        localController = player.PlayerPawn.controller;
-        PlayerManager.instance.OnLocalPlayerSet -= SetUp;
+        localController = playerpawn.controller;
+        PlayerManager.instance.OnLocalPlayerPawnSet -= SetUp;
     }
 
     public void AddItem(Item item)

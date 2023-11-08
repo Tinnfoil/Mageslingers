@@ -233,13 +233,30 @@ MonoBehaviour:
   Icon: {fileID: 21300000, guid: 77bab8ad5cda8ca45a8d4aee7cc47ab8, type: 3}
   weaponData: {fileID: 159386791845909621}
   WeaponType: 1
-  ProjectilePrefab: {fileID: 2743711430085315796, guid: 055119e1356e2ed4280f3d30d8b689da,
+  ProjectilePrefab: {fileID: 2743711430085315796, guid: eac1e05f2e9da5045b3df5fceffc731f,
     type: 3}
   CurrentProjectile: {fileID: 0}
   ProjectileSpawnPoint: {fileID: 477550737148503406}
   FireDelay: 0.2
   OpenConnections: []
   StaffData: 
+--- !u!114 &6272981690245142560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5163326279263403583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 0
+  serverOnly: 0
+  visible: 0
+  m_AssetId: df5c8ad7ae635e04ab03f1efdbdf3521
+  hasSpawned: 0
 --- !u!114 &8470141966731621235 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 549286347117080532, guid: 1e927832801c92e46a3608bf42f10012,

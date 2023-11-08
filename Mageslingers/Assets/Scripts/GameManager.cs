@@ -8,19 +8,38 @@ using UnityEngine.SceneManagement;
 public class GameManager : NetworkBehaviour
 {
     public static GameManager instance;
+    public ItemDatabase ItemDB;
+    public StatusEffectDatabase StatusEffectDatabase;
 
     public Action OnSceneLoaded;
     List<AsyncOperation> scenesLoading = new List<AsyncOperation>();
+
+    public Dictionary<StatusEffect, StatusEffectData> StatusEffectMap = new Dictionary<StatusEffect, StatusEffectData>();
     public void Awake()
     {
         if (instance == null)
         {
             instance = this;
+            ItemDB.InitializeDatabase();
+            for (int i = 0; i < StatusEffectDatabase.StatusEffectData.Length; i++)
+            {
+                StatusEffectMap.Add(StatusEffectDatabase.StatusEffectData[i].StatusEffect, StatusEffectDatabase.StatusEffectData[i]);
+            }
         }
         else
         {
             Destroy(this);
         }
+    }
+
+    public GameObject SpawnGameObject(GameObject prefab, Transform transform, Vector3 position, Quaternion rotation)
+    {
+        return Instantiate(prefab, position, rotation, transform);
+    }
+
+    public void DestroyGameObject(GameObject gameObject)
+    {
+        Destroy(gameObject);
     }
     // Start is called before the first frame update
     void Start()
@@ -28,8 +47,8 @@ public class GameManager : NetworkBehaviour
         SceneManager.sceneLoaded += SceneLoaded;
 
         // TEMP
-        scenesLoading.Add(SceneManager.LoadSceneAsync(2, LoadSceneMode.Additive));
-        StartCoroutine(GetSceneLoadProgress());
+        //scenesLoading.Add(SceneManager.LoadSceneAsync(2, LoadSceneMode.Additive));
+        //StartCoroutine(GetSceneLoadProgress());
     }
 
     public IEnumerator GetSceneLoadProgress()

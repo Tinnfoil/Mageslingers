@@ -20,6 +20,7 @@ public class Staff : WeaponPiece
 
     public string StaffData;
 
+
     public override void Start()
     {
         OpenConnections.AddRange(weaponData.connectionPoints);
@@ -184,6 +185,7 @@ public class Staff : WeaponPiece
         if (holder)
         {
             Equip(holder.GetComponent<PlayerPawn>());
+            Instantiate(GameManager.instance.ItemDB.Items[0].GetComponent<WeaponPiece>().Model);
         }
     }
 
@@ -247,7 +249,10 @@ public class Staff : WeaponPiece
         OpenConnections.AddRange(weaponPiece.weaponData.connectionPoints);
         OpenConnections.Remove(cp);
 
-        Destroy(weaponPiece);
+        if (isServer)
+        {
+            NetworkServer.Destroy(weaponPiece.gameObject);
+        }
     }
 
     /*
