@@ -888,6 +888,38 @@
 		"directory": "C:\\Program Files\\Epic Games\\UE_5.3\\Engine\\Source"
 	},
 	{
+		"file": "C:\\Users\\kenny\\OneDrive\\Documents\\Unreal Projects\\SmithworksReforged\\Source\\Smithworks2Prototype\\Pickupable.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\kenny\\OneDrive\\Documents\\Unreal Projects\\SmithworksReforged\\.vscode\\compileCommands_SmithworksReforged\\Smithworks2Prototype.1.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.3\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\kenny\\OneDrive\\Documents\\Unreal Projects\\SmithworksReforged\\Source\\Smithworks2Prototype\\Pickupable.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\kenny\\OneDrive\\Documents\\Unreal Projects\\SmithworksReforged\\.vscode\\compileCommands_SmithworksReforged\\Smithworks2Prototype.1.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.3\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\kenny\\OneDrive\\Documents\\Unreal Projects\\SmithworksReforged\\Source\\Smithworks2Prototype\\PickupableObject.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\kenny\\OneDrive\\Documents\\Unreal Projects\\SmithworksReforged\\.vscode\\compileCommands_SmithworksReforged\\Smithworks2Prototype.1.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.3\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\kenny\\OneDrive\\Documents\\Unreal Projects\\SmithworksReforged\\Source\\Smithworks2Prototype\\PickupableObject.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\kenny\\OneDrive\\Documents\\Unreal Projects\\SmithworksReforged\\.vscode\\compileCommands_SmithworksReforged\\Smithworks2Prototype.1.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.3\\Engine\\Source"
+	},
+	{
 		"file": "C:\\Users\\kenny\\OneDrive\\Documents\\Unreal Projects\\SmithworksReforged\\Source\\Smithworks2Prototype\\Smithworks2Prototype.Build.cs",
 		"arguments": [
 			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",

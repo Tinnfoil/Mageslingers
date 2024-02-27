@@ -28,7 +28,7 @@ public:
 	virtual void Interact_Implementation() override;
 
 	UPROPERTY(EditAnywhere)
-	FString InteractText = "Interact";
+	FString InteractText = "Interact[E]";
 
 	virtual FString GetInteractText_Implementation() override;
 };
