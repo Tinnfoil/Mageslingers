@@ -25,4 +25,9 @@ public class GameNetworkManager : NetworkManager
         base.OnServerDisconnect(conn);
     }
 
+    public void SetTransport(Transport transport)
+    {
+        this.transport = transport;
+    }
+
 }

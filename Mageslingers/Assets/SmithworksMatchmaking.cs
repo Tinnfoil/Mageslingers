@@ -14,6 +14,9 @@ public class SmithworksMatchmaking : MonoBehaviour
     private NetworkManager networkManager;
     public int AppID;
 
+    public TelepathyTransport telepathyTransport;
+    public FizzyFacepunch steamWorksTransport;
+    
     void Start()
     {
         networkManager = GetComponent<NetworkManager>();
@@ -77,12 +80,24 @@ public class SmithworksMatchmakingEditor : Editor
     {
         base.OnInspectorGUI();
         SmithworksMatchmaking matchmaking = (SmithworksMatchmaking)target;
-        SteamManager sm = FindObjectOfType<SteamManager>();
+        SteamManager sm = matchmaking.GetComponent<SteamManager>();
         if (sm != null)
         {
-            FindObjectOfType<SteamManager>().SteamEnabled = (matchmaking.transport == TransportType.Steam);
+            sm.SteamEnabled = (matchmaking.transport == TransportType.Steam);
         }
-
+        GameNetworkManager gameManager = matchmaking.GetComponent<GameNetworkManager>();
+        if (gameManager)
+        {
+            if (matchmaking.transport == TransportType.Steam)
+            {
+                gameManager.SetTransport(matchmaking.steamWorksTransport);
+            }
+            else if (matchmaking.transport == TransportType.Local)
+            {
+                gameManager.SetTransport(matchmaking.telepathyTransport);
+            }
+            
+        }
     }
 }
 #endif

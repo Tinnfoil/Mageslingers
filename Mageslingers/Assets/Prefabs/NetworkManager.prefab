@@ -152,3 +152,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transport: 0
   AppID: 2145460
+  telepathyTransport: {fileID: 7404442242006100514}
+  steamWorksTransport: {fileID: 1954107797272588759}
