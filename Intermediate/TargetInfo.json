@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "Smithworks2Prototype",
+			"Path": "..\\Source\\Smithworks2Prototype.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "Smithworks2PrototypeEditor",
+			"Path": "..\\Source\\Smithworks2PrototypeEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}
