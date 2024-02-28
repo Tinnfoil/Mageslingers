@@ -23,12 +23,19 @@ void AInteractableObject::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 }
 
-void AInteractableObject::Interact_Implementation()
+void AInteractableObject::StartInteraction_Implementation()
 {
-	//UE_LOG(LogTemp, Display, TEXT("Interacted Base"));
-
 	if(GEngine)
     	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("Interacted Base"));	
+
+	// As Default implementation, we just end the interaction right away. We assume its a one time interaction
+	EndInteraction_Implementation();
+}
+
+void AInteractableObject::EndInteraction_Implementation()
+{
+	if(GEngine)
+    	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("End Base"));	
 }
 
 FString AInteractableObject::GetInteractText_Implementation()

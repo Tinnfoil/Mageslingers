@@ -24,7 +24,10 @@ class SMITHWORKS2PROTOTYPE_API IInteractable
 public:
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
-	void Interact();
+	void StartInteraction();
+
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
+	void EndInteraction();
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
 	FString GetInteractText();

@@ -25,7 +25,9 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	virtual void Interact_Implementation() override;
+	virtual void StartInteraction_Implementation() override;
+	
+	virtual void EndInteraction_Implementation() override;
 
 	UPROPERTY(EditAnywhere)
 	FString InteractText = "Interact[E]";
