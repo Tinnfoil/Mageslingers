@@ -16,10 +16,12 @@ public:
 	ABaseObject();
 
 private:
-	UPROPERTY(EditAnywhere)
-	UStaticMeshComponent* BaseMesh;
 
 protected:
+
+	UPROPERTY(EditAnywhere)
+	UStaticMeshComponent* BaseMesh;
+	
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 

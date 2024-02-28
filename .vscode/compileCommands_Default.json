@@ -888,6 +888,54 @@
 		"directory": "C:\\Program Files\\Epic Games\\UE_5.3\\Engine\\Source"
 	},
 	{
+		"file": "C:\\Users\\kenny\\OneDrive\\Documents\\Unreal Projects\\SmithworksReforged\\Source\\Smithworks2Prototype\\MageStaff.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\kenny\\OneDrive\\Documents\\Unreal Projects\\SmithworksReforged\\.vscode\\compileCommands_Default\\Smithworks2Prototype.1.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.3\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\kenny\\OneDrive\\Documents\\Unreal Projects\\SmithworksReforged\\Source\\Smithworks2Prototype\\MageStaff.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\kenny\\OneDrive\\Documents\\Unreal Projects\\SmithworksReforged\\.vscode\\compileCommands_Default\\Smithworks2Prototype.1.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.3\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\kenny\\OneDrive\\Documents\\Unreal Projects\\SmithworksReforged\\Source\\Smithworks2Prototype\\MageWand.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\kenny\\OneDrive\\Documents\\Unreal Projects\\SmithworksReforged\\.vscode\\compileCommands_Default\\Smithworks2Prototype.1.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.3\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\kenny\\OneDrive\\Documents\\Unreal Projects\\SmithworksReforged\\Source\\Smithworks2Prototype\\MageWand.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\kenny\\OneDrive\\Documents\\Unreal Projects\\SmithworksReforged\\.vscode\\compileCommands_Default\\Smithworks2Prototype.1.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.3\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\kenny\\OneDrive\\Documents\\Unreal Projects\\SmithworksReforged\\Source\\Smithworks2Prototype\\MageWeapon.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\kenny\\OneDrive\\Documents\\Unreal Projects\\SmithworksReforged\\.vscode\\compileCommands_Default\\Smithworks2Prototype.1.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.3\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\kenny\\OneDrive\\Documents\\Unreal Projects\\SmithworksReforged\\Source\\Smithworks2Prototype\\MageWeapon.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\kenny\\OneDrive\\Documents\\Unreal Projects\\SmithworksReforged\\.vscode\\compileCommands_Default\\Smithworks2Prototype.1.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.3\\Engine\\Source"
+	},
+	{
 		"file": "C:\\Users\\kenny\\OneDrive\\Documents\\Unreal Projects\\SmithworksReforged\\Source\\Smithworks2Prototype\\Pickupable.cpp",
 		"arguments": [
 			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
@@ -937,6 +985,38 @@
 	},
 	{
 		"file": "C:\\Users\\kenny\\OneDrive\\Documents\\Unreal Projects\\SmithworksReforged\\Source\\Smithworks2Prototype\\Smithworks2Prototype.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\kenny\\OneDrive\\Documents\\Unreal Projects\\SmithworksReforged\\.vscode\\compileCommands_Default\\Smithworks2Prototype.1.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.3\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\kenny\\OneDrive\\Documents\\Unreal Projects\\SmithworksReforged\\Source\\Smithworks2Prototype\\Weapon.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\kenny\\OneDrive\\Documents\\Unreal Projects\\SmithworksReforged\\.vscode\\compileCommands_Default\\Smithworks2Prototype.1.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.3\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\kenny\\OneDrive\\Documents\\Unreal Projects\\SmithworksReforged\\Source\\Smithworks2Prototype\\Weapon.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\kenny\\OneDrive\\Documents\\Unreal Projects\\SmithworksReforged\\.vscode\\compileCommands_Default\\Smithworks2Prototype.1.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.3\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\kenny\\OneDrive\\Documents\\Unreal Projects\\SmithworksReforged\\Source\\Smithworks2Prototype\\WeaponObject.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\kenny\\OneDrive\\Documents\\Unreal Projects\\SmithworksReforged\\.vscode\\compileCommands_Default\\Smithworks2Prototype.1.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.3\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\kenny\\OneDrive\\Documents\\Unreal Projects\\SmithworksReforged\\Source\\Smithworks2Prototype\\WeaponObject.h",
 		"arguments": [
 			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
 			"@C:\\Users\\kenny\\OneDrive\\Documents\\Unreal Projects\\SmithworksReforged\\.vscode\\compileCommands_Default\\Smithworks2Prototype.1.rsp"
