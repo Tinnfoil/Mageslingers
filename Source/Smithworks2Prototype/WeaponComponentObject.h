@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "PickupableObject.h"
+//#include "GenericData.h"
 #include "WeaponComponentObject.generated.h"
 
 UCLASS()
@@ -24,16 +25,20 @@ private:
 	//USceneComponent* SocketsParent;
 
 	UFUNCTION(BlueprintCallable, Category = "Weapons/Sockets")
-	void SetWeaponSockets(TArray<UStaticMeshSocket*> WeaponSockets);
+	void SetWeaponSockets();
 
 protected:
 
-	TArray<UStaticMeshSocket*> GemSockets;
+	TArray<FName> GemSocketNames;
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+
+	//UPROPERTY(EditAnywhere)
+	//FWeaponComponentData* WeaponData;
 
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+	
 
 };

@@ -18,14 +18,15 @@ public:
 private:
 
 protected:
-
-	UPROPERTY(EditAnywhere)
-	UStaticMeshComponent* BaseMesh;
 	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UStaticMeshComponent* BaseMesh;
+
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 public:	
+
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 };

@@ -29,7 +29,7 @@ void APickupableObject::StartInteraction_Implementation()
 	if(GEngine)
     	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("Interact Pickup Base"));	
 
-	Pickup_Implementation();
+	Execute_Pickup(this);
 }
 
 void APickupableObject::EndInteraction_Implementation()
@@ -37,7 +37,7 @@ void APickupableObject::EndInteraction_Implementation()
 	if(GEngine)
     	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("Interact Drop Base"));	
 
-	Drop_Implementation();
+	Execute_Drop(this);
 }
 
 void APickupableObject::Pickup_Implementation()

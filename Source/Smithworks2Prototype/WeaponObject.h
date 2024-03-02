@@ -25,6 +25,8 @@ protected:
 
 	float CurrChargeTime = 1;
 
+	FString HandleIdentifier = "Handle";
+
 public:	
 
 	float ChargeTime = 1;

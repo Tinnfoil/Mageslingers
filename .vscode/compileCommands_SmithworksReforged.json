@@ -856,6 +856,22 @@
 		"directory": "C:\\Program Files\\Epic Games\\UE_5.3\\Engine\\Source"
 	},
 	{
+		"file": "C:\\Users\\kenny\\OneDrive\\Documents\\Unreal Projects\\SmithworksReforged\\Source\\Smithworks2Prototype\\GenericData.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\kenny\\OneDrive\\Documents\\Unreal Projects\\SmithworksReforged\\.vscode\\compileCommands_SmithworksReforged\\Smithworks2Prototype.1.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.3\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\kenny\\OneDrive\\Documents\\Unreal Projects\\SmithworksReforged\\Source\\Smithworks2Prototype\\GenericData.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\kenny\\OneDrive\\Documents\\Unreal Projects\\SmithworksReforged\\.vscode\\compileCommands_SmithworksReforged\\Smithworks2Prototype.1.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.3\\Engine\\Source"
+	},
+	{
 		"file": "C:\\Users\\kenny\\OneDrive\\Documents\\Unreal Projects\\SmithworksReforged\\Source\\Smithworks2Prototype\\Interactable.cpp",
 		"arguments": [
 			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
@@ -1008,6 +1024,22 @@
 		"directory": "C:\\Program Files\\Epic Games\\UE_5.3\\Engine\\Source"
 	},
 	{
+		"file": "C:\\Users\\kenny\\OneDrive\\Documents\\Unreal Projects\\SmithworksReforged\\Source\\Smithworks2Prototype\\WeaponComponentObject.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\kenny\\OneDrive\\Documents\\Unreal Projects\\SmithworksReforged\\.vscode\\compileCommands_SmithworksReforged\\Smithworks2Prototype.1.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.3\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\kenny\\OneDrive\\Documents\\Unreal Projects\\SmithworksReforged\\Source\\Smithworks2Prototype\\WeaponComponentObject.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\kenny\\OneDrive\\Documents\\Unreal Projects\\SmithworksReforged\\.vscode\\compileCommands_SmithworksReforged\\Smithworks2Prototype.1.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.3\\Engine\\Source"
+	},
+	{
 		"file": "C:\\Users\\kenny\\OneDrive\\Documents\\Unreal Projects\\SmithworksReforged\\Source\\Smithworks2Prototype\\WeaponObject.cpp",
 		"arguments": [
 			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
@@ -1017,6 +1049,22 @@
 	},
 	{
 		"file": "C:\\Users\\kenny\\OneDrive\\Documents\\Unreal Projects\\SmithworksReforged\\Source\\Smithworks2Prototype\\WeaponObject.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\kenny\\OneDrive\\Documents\\Unreal Projects\\SmithworksReforged\\.vscode\\compileCommands_SmithworksReforged\\Smithworks2Prototype.1.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.3\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\kenny\\OneDrive\\Documents\\Unreal Projects\\SmithworksReforged\\Source\\Smithworks2Prototype\\WeaponSocketComponent.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\kenny\\OneDrive\\Documents\\Unreal Projects\\SmithworksReforged\\.vscode\\compileCommands_SmithworksReforged\\Smithworks2Prototype.1.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.3\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\kenny\\OneDrive\\Documents\\Unreal Projects\\SmithworksReforged\\Source\\Smithworks2Prototype\\WeaponSocketComponent.h",
 		"arguments": [
 			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
 			"@C:\\Users\\kenny\\OneDrive\\Documents\\Unreal Projects\\SmithworksReforged\\.vscode\\compileCommands_SmithworksReforged\\Smithworks2Prototype.1.rsp"
