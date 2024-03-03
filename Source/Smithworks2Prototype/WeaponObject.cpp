@@ -15,7 +15,7 @@ AWeaponObject::AWeaponObject()
 void AWeaponObject::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
 }
 
 // Called every frame

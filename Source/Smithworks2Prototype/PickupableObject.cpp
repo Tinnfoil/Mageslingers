@@ -24,31 +24,33 @@ void APickupableObject::Tick(float DeltaTime)
 
 }
 
-void APickupableObject::StartInteraction_Implementation()
+void APickupableObject::StartInteraction_Implementation(AActor* InteractingActor)
 {
-	if(GEngine)
-    	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("Interact Pickup Base"));	
+	//if(GEngine)
+    	//GEngine->AddOnScreenDebugMessage(-1, 3.0f, FColor::Yellow, TEXT("Interact Pickup Base"));	
 
-	Execute_Pickup(this);
+	Execute_Pickup(this, InteractingActor);
+	Pickup_Implementation(InteractingActor);
 }
 
-void APickupableObject::EndInteraction_Implementation()
+void APickupableObject::EndInteraction_Implementation(AActor* InteractingActor)
 {
 	if(GEngine)
-    	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("Interact Drop Base"));	
+    	GEngine->AddOnScreenDebugMessage(-1, 3.0f, FColor::Yellow, TEXT("Interact Drop Base"));	
 
-	Execute_Drop(this);
+	Execute_Drop(this, InteractingActor);
+	Drop_Implementation(InteractingActor);
 }
 
-void APickupableObject::Pickup_Implementation()
+void APickupableObject::Pickup_Implementation(AActor* Actor)
 {
-	if(GEngine)
-    	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("Pickup Base"));	
+	//if(GEngine)
+    	//GEngine->AddOnScreenDebugMessage(-1, 3.0f, FColor::Yellow, TEXT("Pickup Base"));	
 }
 
-void APickupableObject::Drop_Implementation()
+void APickupableObject::Drop_Implementation(AActor* Actor)
 {
 	if(GEngine)
-    	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("Drop Base"));	
+    	GEngine->AddOnScreenDebugMessage(-1, 3.0f, FColor::Yellow, TEXT("Drop Base"));	
 }
 

@@ -23,16 +23,16 @@ void AInteractableObject::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 }
 
-void AInteractableObject::StartInteraction_Implementation()
+void AInteractableObject::StartInteraction_Implementation(AActor* InteractingActor)
 {
 	if(GEngine)
     	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("Interacted Base"));	
 
 	// As Default implementation, we just end the interaction right away. We assume its a one time interaction
-	EndInteraction_Implementation();
+	EndInteraction_Implementation(InteractingActor);
 }
 
-void AInteractableObject::EndInteraction_Implementation()
+void AInteractableObject::EndInteraction_Implementation(AActor* InteractingActor)
 {
 	if(GEngine)
     	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("End Base"));	

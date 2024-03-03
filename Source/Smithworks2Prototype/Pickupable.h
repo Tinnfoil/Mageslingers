@@ -24,8 +24,8 @@ class SMITHWORKS2PROTOTYPE_API IPickupable
 public:
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
-	void Pickup();
+	void Pickup(AActor* Actor);
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
-	void Drop();
+	void Drop(AActor* Actor);
 };
