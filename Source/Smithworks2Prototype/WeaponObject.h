@@ -33,6 +33,12 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	UFUNCTION(BlueprintCallable)
+ 	void SplitWeaponGemData(FString WeaponGemStringData, UStaticMeshComponent* BodyMesh, UStaticMeshComponent* HeadMesh, UStaticMeshComponent* TailMesh, FWeaponItemData WeaponData);
+
+	UFUNCTION(BlueprintCallable)
+	TArray<FString> SplitGemData(FString GemData);
+
 	virtual void ReadyWeapon_Implementation() override;
 
 	virtual void UnreadyWeapon_Implementation() override;

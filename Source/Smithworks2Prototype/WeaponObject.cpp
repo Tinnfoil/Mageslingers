@@ -1,7 +1,10 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
+
 #include "WeaponObject.h"
+#include "Containers/UnrealString.h"
+#include "FWeaponItemData.h"
 
 // Sets default values
 AWeaponObject::AWeaponObject()
@@ -54,4 +57,71 @@ bool AWeaponObject::IsWeaponCharging_Implementation() const
 	return CurrChargeTime < ChargeTime;
 }
 
+
+void AWeaponObject::SplitWeaponGemData(FString WeaponGemStringData, UStaticMeshComponent* BodyMesh, UStaticMeshComponent* HeadMesh, UStaticMeshComponent* TailMesh, FWeaponItemData WeaponData)
+{
+	TArray<FString> ComponentData;
+	const TCHAR* PiecesDelim[] =
+	{				
+		TEXT(";"),
+	};
+	WeaponGemStringData.ParseIntoArray(ComponentData, PiecesDelim, UE_ARRAY_COUNT(PiecesDelim), true);
+
+	const TCHAR* ComponentDelim[] =
+	{				
+		TEXT(":"),
+	};
+	const TCHAR* GemDelim[] =
+	{				
+		TEXT(","),
+	};
+
+	for(FString CData: ComponentData)
+	{
+		TArray<FString> PieceData; // Example: Body:Gem1,Gem2 -> Body | Gem1,Gem2
+		CData.ParseIntoArray(PieceData, ComponentDelim, UE_ARRAY_COUNT(ComponentDelim), true);
+
+		UStaticMeshComponent* TargetMesh = nullptr;
+		if(PieceData[0] == "Body")
+		{
+			TargetMesh = BodyMesh;
+		}
+		else if(PieceData[0] == "Head")
+		{
+			TargetMesh = HeadMesh;	
+		}
+		else if(PieceData[0] == "Tail")
+		{
+			TargetMesh = TailMesh;
+		}
+
+		TArray<FString> GemData; // Example: Gem1,Gem2 -> Gem1 | Gem2
+		PieceData[1].ParseIntoArray(GemData, GemDelim, UE_ARRAY_COUNT(GemDelim), true);
+
+		int index = 0;
+		for (FString Gem : GemData)
+		{
+			if(Gem != "Null")
+			{
+				FString SocketName = "Gem Socket " + index;
+				TargetMesh->GetSocketLocation(*SocketName);
+				
+				UStaticMeshComponent* s = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Gem" + index));
+				s->SetStaticMesh();
+				s->SetupAttachment(TargetMesh, *SocketName);
+				
+				if(GEngine)
+    				GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, FString::Printf(TEXT("Looking Socket: %s"), *Gem));	
+			}
+			
+			index++;
+		}
+		
+	}
+}
+
+TArray<FString> AWeaponObject::SplitGemData(FString GemData)
+{
+	return TArray<FString>();
+}
 
