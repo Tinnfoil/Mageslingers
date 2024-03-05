@@ -61,9 +61,6 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
-# ProBuilder
-Smithworks/ProjectSettings/Packages/com.unity.probuilder/Settings.json
-
 # Ignore parrel sync clones
 Mageslingers_clone_0
 

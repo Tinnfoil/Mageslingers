@@ -1,13 +1,13 @@
 {
 	"Targets": [
 		{
-			"Name": "Smithworks2Prototype",
-			"Path": "..\\Source\\Smithworks2Prototype.Target.cs",
+			"Name": "Mageslingers",
+			"Path": "..\\Source\\Mageslingers.Target.cs",
 			"Type": "Game"
 		},
 		{
-			"Name": "Smithworks2PrototypeEditor",
-			"Path": "..\\Source\\Smithworks2PrototypeEditor.Target.cs",
+			"Name": "MageslingersEditor",
+			"Path": "..\\Source\\MageslingersEditor.Target.cs",
 			"Type": "Editor"
 		}
 	]

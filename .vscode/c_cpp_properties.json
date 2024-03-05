@@ -1,12 +1,12 @@
 {
     "configurations": [
         {
-            "name": "Smithworks2PrototypeEditor Editor Win64 Development (SmithworksReforged)",
+            "name": "MageslingersEditor Editor Win64 Development (Mageslingers)",
             "compilerPath": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
             "cStandard": "c17",
             "cppStandard": "c++20",
             "intelliSenseMode": "msvc-x64",
-            "compileCommands": "C:\\Users\\kenny\\OneDrive\\Documents\\Unreal Projects\\SmithworksReforged\\.vscode\\compileCommands_SmithworksReforged.json"
+            "compileCommands": "C:\\Users\\kenny\\OneDrive\\Documents\\Unreal Projects\\Mageslingers\\.vscode\\compileCommands_Mageslingers.json"
         },
         {
             "name": "Win32",
@@ -14,7 +14,7 @@
             "cStandard": "c17",
             "cppStandard": "c++20",
             "intelliSenseMode": "msvc-x64",
-            "compileCommands": "C:\\Users\\kenny\\OneDrive\\Documents\\Unreal Projects\\SmithworksReforged\\.vscode\\compileCommands_Default.json"
+            "compileCommands": "C:\\Users\\kenny\\OneDrive\\Documents\\Unreal Projects\\Mageslingers\\.vscode\\compileCommands_Default.json"
         }
     ],
     "version": 4
