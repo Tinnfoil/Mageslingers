@@ -234,6 +234,15 @@ void AALSPlayerController::LookingDirectionAction(const FInputActionValue& Value
 	}
 }
 
+
+void AALSPlayerController::InventoryAction(const FInputActionValue& Value)
+{
+	if (PossessedCharacter)
+	{
+		UE_LOG(LogTemp, Display, TEXT("Inventory"));
+	}
+}
+
 void AALSPlayerController::DebugToggleHudAction(const FInputActionValue& Value)
 {
 	if (PossessedCharacter && Value.Get<bool>())

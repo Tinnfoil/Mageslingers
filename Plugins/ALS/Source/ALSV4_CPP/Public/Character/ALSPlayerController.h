@@ -75,6 +75,9 @@ protected:
 	UFUNCTION()
 	void LookingDirectionAction(const FInputActionValue& Value);
 
+	UFUNCTION()
+	void InventoryAction(const FInputActionValue& Value);
+
 	// Debug actions
 	UFUNCTION()
 	void DebugToggleHudAction(const FInputActionValue& Value);
