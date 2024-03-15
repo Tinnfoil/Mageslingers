@@ -250,7 +250,7 @@ void AALSPlayerController::DebugToggleHudAction(const FInputActionValue& Value)
 		UALSDebugComponent* DebugComp = Cast<UALSDebugComponent>(PossessedCharacter->GetComponentByClass(UALSDebugComponent::StaticClass()));
 		if (DebugComp)
 		{
-			DebugComp->ToggleHud();
+			//DebugComp->ToggleHud();
 		}
 	}
 }
