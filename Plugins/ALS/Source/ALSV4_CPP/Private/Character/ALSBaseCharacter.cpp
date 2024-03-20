@@ -1407,6 +1407,20 @@ void AALSBaseCharacter::VelocityDirectionAction_Implementation()
 	SetRotationMode(EALSRotationMode::VelocityDirection);
 }
 
+void AALSBaseCharacter::InventoryAction_Implementation()
+{
+	
+}
+
+void AALSBaseCharacter::FireAction_Implementation()
+{
+	if(FirePressedDelegate.IsBound())
+	{
+		FirePressedDelegate.Broadcast();
+	}
+	
+}
+
 void AALSBaseCharacter::LookingDirectionAction_Implementation()
 {
 	SetDesiredRotationMode(EALSRotationMode::LookingDirection);

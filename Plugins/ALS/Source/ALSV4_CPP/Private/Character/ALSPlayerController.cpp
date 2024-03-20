@@ -239,7 +239,17 @@ void AALSPlayerController::InventoryAction(const FInputActionValue& Value)
 {
 	if (PossessedCharacter)
 	{
+		PossessedCharacter->InventoryAction();
 		UE_LOG(LogTemp, Display, TEXT("Inventory"));
+	}
+}
+
+void AALSPlayerController::FireAction(const FInputActionValue& Value)
+{
+	if (PossessedCharacter)
+	{
+		PossessedCharacter->FireAction();
+		UE_LOG(LogTemp, Display, TEXT("Fire"));
 	}
 }
 

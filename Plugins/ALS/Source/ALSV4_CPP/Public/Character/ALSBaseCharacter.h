@@ -21,6 +21,8 @@ enum class EVisibilityBasedAnimTickOption : uint8;
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FJumpPressedSignature);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnJumpedSignature);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FFirePressedSignature);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnFiredSignature);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FRagdollStateChangedSignature, bool, bRagdollState);
 
 /*
@@ -182,6 +184,12 @@ public:
 
 	UPROPERTY(BlueprintAssignable, Category = "ALS|Input")
 	FOnJumpedSignature OnJumpedDelegate;
+
+	UPROPERTY(BlueprintAssignable, Category = "ALS|Input")
+	FFirePressedSignature FirePressedDelegate;
+
+	UPROPERTY(BlueprintAssignable, Category = "ALS|Input")
+	FOnFiredSignature OnFiredDelegate;
 
 	UPROPERTY(BlueprintAssignable, Category = "ALS|Input")
 	FRagdollStateChangedSignature RagdollStateChangedDelegate;
@@ -346,6 +354,12 @@ public:
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "ALS|Input")
 	void LookingDirectionAction();
+
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "ALS|Input")
+	void InventoryAction();
+
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "ALS|Input")
+	void FireAction();
 
 protected:
 	/** Ragdoll System */

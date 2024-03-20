@@ -78,6 +78,9 @@ protected:
 	UFUNCTION()
 	void InventoryAction(const FInputActionValue& Value);
 
+	UFUNCTION()
+	void FireAction(const FInputActionValue& Value);
+
 	// Debug actions
 	UFUNCTION()
 	void DebugToggleHudAction(const FInputActionValue& Value);
