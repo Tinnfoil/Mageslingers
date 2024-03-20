@@ -5,11 +5,13 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "BaseObject.h"
+#include "CanDamage.h"
+#include "AppliesStatusEffects.h"
 #include "GameFramework/ProjectileMovementComponent.h"
 #include "BaseProjectile.generated.h"
 
 UCLASS()
-class MAGESLINGERS_API ABaseProjectile : public ABaseObject
+class MAGESLINGERS_API ABaseProjectile : public ABaseObject, public ICanDamage, public IAppliesStatusEffects
 {
 	GENERATED_BODY()
 	
